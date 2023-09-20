@@ -57,37 +57,46 @@ def quicksort(ls,lo,hi):
 
 def partition(ls,lo,hi):
     #p = random.randint(lo,hi)
-    p = 0
+    p = 16
     i = lo
     j = hi
-    step = 0
     pv = ls[p]
-    print("i,j,p",i,j,p,ls[p])
+    print(ls)
+    ls[hi],ls[p] = ls[p],ls[hi]
+    print(ls)
+
+    print(p," ", pv)
     while j>i:
-        print("i,j,ls,lap",i,j,ls,ls[p])
-        if ls[i]<=pv and i<j:
+        print(i,j,ls)
+        while ls[i]<pv and i<j:
             i += 1
-        if ls[j]>=pv and j>i:
+            print(i,":",ls[i]," ",j,":",ls[j]," ",ls)
+        while ls[j]>=pv and j>i:
             j -= 1
-        if ls[i]>pv and ls[j]<pv:
+            print(i,":",ls[i]," ",j,":",ls[j]," ",ls)
+        if ls[i]>=pv and ls[j]<pv:
             temp = ls[i]
             ls[i] = ls[j]
             ls[j] = temp
-            if ls[i]==pv:
-                p = j
-            i+=1
-            j-=1
     print(i,j)
-    
-    temp = ls[i]
-    ls[i]=pv
-    ls[p]=temp
+    ls[hi],ls[i] = ls[i], ls[hi]
     print(ls)
     return ls, i
 
 #print(quicksort([1,6,4,2,4,3,9,10],0,7))
 
-partition([10,3,6,9,4,1,3],0,6)
+ls = [10,3,6,9,4,1,3,6,7,3,4,5,6,8,2,1,3,1,8,9,9,9,9,9]
+
+partition(ls,0,len(ls)-1)
+
+
+def pivot(ls,lo,hi):
+    p = random.randint(lo,hi)
+    i = lo
+    j = hi
+    temp = ls[p]
+    ls[p] = ls[j]
+    ls[j] = temp
 
 
 
