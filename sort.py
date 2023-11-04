@@ -82,12 +82,12 @@ def partition(ls,lo,hi):
     print(ls)
     return ls, i
 
-print(quicksort([1,6,4,2,4,3,9,10],0,7))
+"""print(quicksort([1,6,4,2,4,3,9,10],0,7))
 
 ls = [10,3,6,9,4,1,3,6,7,3,4,5,6,8,2,1,3,1,8,9,9,9,9,9]
 
 partition(ls,0,len(ls)-1)
-
+"""
 
 def pivot(ls,lo,hi):
     p = random.randint(lo,hi)
@@ -99,3 +99,11 @@ def pivot(ls,lo,hi):
 
 
 
+def partition2(ls,lo,hi):
+    i = 0
+    p = random.randint(lo,hi)
+    pv = ls[p]
+    for j in range(len(ls)):
+        if ls[j] < pv:
+            i+=1
+        
